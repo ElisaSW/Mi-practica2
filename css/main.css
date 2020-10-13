@@ -1,0 +1,122 @@
+header {
+  z-index: 10;
+  position: absolute;
+  left: 300px;
+  top: 100px;
+  color: white;
+  font-display: auto;
+  font-size: 50px;
+  text-shadow: black 2px 2px;
+
+}
+
+
+.page {
+ width: 1024px;
+ margin: 0 auto;
+
+}
+
+*{
+  font-size: 1em;
+}
+
+
+
+select{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+
+.clear {
+  clear: both;
+}
+
+.neoland {
+  clear: both;
+  margin: 30px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.fondo {
+  z-index: 1;
+  height: 350px;
+  opacity: 0.7;
+  padding: 20px;
+  overflow: hidden;
+  background-image: url(https://www.swarco.com/sites/default/files/public/hero/image/2018-10/website_keyvisual_parking.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.fondo2 {
+    z-index: 1;
+    height: 500px;
+    width: 500px;
+    opacity: 0.7;
+    padding: 20px;
+    overflow: hidden;
+    background-image: url(https://www.swarco.com/sites/default/files/public/hero/image/2018-10/website_keyvisual_parking.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.tabla{
+
+  padding: 30px;
+  position: absolute;
+  z-index: 10;
+  left: 300px;
+  top: 100px;
+  color: black;
+  font-size: 20px;
+  align-items: center;
+  }
+
+.enlaces{
+    float: left;
+    width: 10%;
+    display: block;
+    text-align: left;
+  }
+
+a {
+  font-style: normal;
+  font-family: serif;
+  color: blue;
+  text-decoration-style: none;
+}
+
+
+.texto {
+  float: right;
+  width: 90%;
+  display: block;
+  padding: 10px;
+  text-align: justify;
+}
+
+
+.cupones{
+  display: flex;
+
+}
+
+.cupones div{
+  flex: 1;
+  border: 1px solid black;
+  padding: 45px;
+  margin: 20px;
+  height: 70px;
+  width:  90px;
+  justify-content:space-background;
+  flex-direction: row;
+}
+
+.message {
+  width: 40%;
+}
