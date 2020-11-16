@@ -1,0 +1,53 @@
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+
+$theme-colors: (
+  "primary": #0464b4
+);
+
+@import "../bootstrap/scss/bootstrap";
+
+.navbar-brand span {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+.carousel-item {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-item-1 {
+  background-image: url('../img/parking.jpg');
+}
+.carousel-item-2 {
+  background-image: url('../img/parking2.jpg');
+}
+.carousel-item-3 {
+  background-image: url('../img/parking3.jpg');
+}
+
+/* SM */
+@media (min-width: 576px) {
+
+}
+
+/* MD */
+@media (min-width: 768px) {
+  .carousel-item {
+    height: 300px;
+  }
+}
+
+/* LG */
+@media (min-width: 992px) {
+
+}
+
+/* XL */
+@media (min-width: 1200px) {
+
+}

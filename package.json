@@ -1,0 +1,17 @@
+{
+  "name": "jquery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jquery": "^3.5.4",
+    "@types/jquery.validation": "^1.16.6",
+    "@types/mapbox-gl": "^1.12.7",
+    "@types/node": "^14.14.7"
+  }
+}

@@ -1,0 +1,25 @@
+$primary: var(--primary);
+
+body {
+  background-image: url(../img/parking.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.display-2 a:hover, .display-2 a:active, .display-2 a:focus {
+  text-decoration: none;
+  background-color: $primary !important;
+}
+
+form a:hover, form a:active, form a:focus {
+  text-decoration: none;
+  color: $primary !important;
+}
+
+.bg-semi-light {
+  background-color: rgba(1, 1, 1, .6);
+}
+
+.text-shadow {
+  text-shadow: 0 0 2px #888888;
+}

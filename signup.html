@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <title>Park Finder - Home</title>
+
+    <!-- Title fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- My CSS-->
+    <link rel="stylesheet" href="scss/main.min.css">
+    <link rel="stylesheet" href="scss/signup.min.css">
+
+  </head>
+  <body class="h-100">
+
+    <header class="container-fluid text-center pt-5">
+      <div class="container bg-semi-light p-5 rounded-top text-shadow">
+        <h1 class="display-2">
+          <a class="text-light bg-primary px-4 rounded" href="index.html">Park Finder</a>
+        </h1>
+
+        <h3 class="text-light py-5">SIGN UP</h3>
+
+        <form class="justify-content-center" action="index.html" method="post">
+
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="email" class="text-light pr-3 pt-1 lead">Email</label>
+            </div>
+            <div class="col-5">
+              <input id="email" type="text" name="email" value="" class="form-control" required>
+            </div>
+            </div>
+
+
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="pass" class="text-light pr-3 pt-1 lead">Password</label>
+            </div>
+            <div class="col-5">
+              <input id="pass" type="text" name="pass" value="" class="form-control" required>
+            </div>
+            </div>
+
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="pass2" class="text-light pr-3 pt-1 lead">Repeat password</label>
+            </div>
+            <div class="col-5">
+              <input id="pass2" type="text" name="pass2" value="" class="form-control" required>
+            </div>
+        </div>
+
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="name" class="text-light pr-3 pt-1 lead">Name</label>
+            </div>
+            <div class="col-5">
+              <input id="nombre" type="text" name="nombre" value="" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="surnames" class="text-light pr-3 pt-1 lead">Surnames</label>
+            </div>
+            <div class="col-5">
+              <input id="apellidos" type="text" name="apellidos" value="" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="dni" class="text-light pr-3 pt-1 lead">DNI</label>
+            </div>
+            <div class="col-5">
+              <div class="row">
+                <div class="col-9">
+                  <input id="dni" type="text" name="dni" value="" class="form-control" required onkeyup="change_dni()">
+                </div>
+                <div class="col-3 pt-1 text-left">
+                  <span id="dnil" class="lead text-light"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="birth_date" class="text-light pr-3 pt-1 lead">Birth date</label>
+            </div>
+            <div class="col-5">
+              <div class="row">
+                <div class="col-7">
+                  <input id="birth_date" type="date" name="birth_date" value="" class="form-control" required onkeyup="change_birth_date()">
+                </div>
+                <div class="col-5 pt-1 text-left">
+                  <span id="age" class="lead text-light"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="car_plate" class="text-light pr-3 pt-1 lead">Car plate</label>
+            </div>
+            <div class="col-5">
+              <div class="row">
+                <div class="col-7">
+                  <input id="car_plate" type="text" name="car_plate" value="" class="form-control" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+              <label for="env_class" class="text-light pr-3 pt-1 lead">Environment class</label>
+            </div>
+            <div class="col-5">
+              <div class="row">
+                <div class="col-7">
+                  <select class="form-control" name="env_class" id="env_class" required onchange="change_env_class()">
+                    <option value="">-- Select one class --</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="ECO">ECO</option>
+                    <option value="0">0</option>
+                  </select>
+                </div>
+                <div class="col-5 pt-1 text-left">
+                  <span id="eco_discount" class="lead text-light"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+            </div>
+            <div class="col-5 text-left">
+              <a href="#" data-toggle="collapse" data-target="#prices" class=""><i class="fas fa-caret-down"></i> show prices list</a>
+              <div id="prices" class="collapse bg-light mt-3">
+                <div class="p-3">
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th>Discount</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody id="prices_body">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-2 text-left">
+            </div>
+            <div class="col-5 text-left">
+              <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+            </div>
+          </div>
+        </form>
+      </div>
+    </header>
+
+    <!-- Footer -->
+    <footer class="mt-auto text-center">
+      <div class="container py-3 bg-semi-light text-primary text-shadow rounded-bottom">
+        @neoland
+      </div>
+    </footer>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Our JS -->
+    <script src="js/src.js" charset="utf-8"></script>
+  </body>
+</html>
