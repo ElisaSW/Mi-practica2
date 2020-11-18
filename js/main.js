@@ -1,3 +1,4 @@
+//Definiciones typescript
 //Validar que la letra del DNI coincide
 $.validator.addMethod("nif", function (value, element, param) {
     var resultado = value.match(/\d{8}[A-Z]$/g);
@@ -108,7 +109,6 @@ $("form").validate({
         },
     }
 });
-//ejemplo de evento --> $("#buscar").on("click", function(){})
 //VARIABLES GLOBALES
 var map;
 var position;
@@ -173,12 +173,6 @@ function calc_prices() {
     document.getElementById("prices_body").innerHTML = text;
 }
 //CUPONES
-function load_coupons() {
-    // JSON desde URL
-    coupons = JSON.parse(cupons_data);
-    //usar $ ajax para llamar al json
-    print_coupons();
-}
 function print_coupons() {
     var articles_list = document.querySelectorAll("#coupons .card-columns")[0];
     articles_list.innerHTML = "";
@@ -340,7 +334,13 @@ $(document).ready(function () {
     }
     /* Sólamente coupons.html */
     if (document.getElementById("coupons") !== null) {
-        load_coupons();
+        function load_coupons() {
+            $.ajax({
+                url: "coupons.json"
+            }).done(function (response) {
+                print_coupons();
+            });
+        }
     }
     /* Sólamente profile.html */
     if (document.getElementById("user-profile") !== null) {
@@ -353,4 +353,5 @@ $(document).ready(function () {
     if (document.getElementById("map") !== null) {
         cargar_mapa();
     }
+    ;
 });

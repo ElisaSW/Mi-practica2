@@ -1,3 +1,17 @@
+//Definiciones typescript
+
+type coupon = [{
+  img: string,
+  body: string,
+  button: string
+}]
+
+type ubicacion = [
+  number,number
+];
+
+
+
 //Validar que la letra del DNI coincide
 
 $.validator.addMethod("nif", function(value, element, param) {
@@ -136,11 +150,9 @@ $("form").validate({
 
 
 
-//ejemplo de evento --> $("#buscar").on("click", function(){})
-
 //VARIABLES GLOBALES
 var map: any;
-var position: any;
+var position: ubicacion;
 var base_price: number = 75;
 var coupons = [];
 
@@ -207,12 +219,7 @@ function calc_prices() {
 
 //CUPONES
 
-function load_coupons() {
-  // JSON desde URL
-  coupons = JSON.parse(cupons_data);
-  //usar $ ajax para llamar al json
-  print_coupons();
-}
+
 
 function print_coupons() {
   var articles_list = document.querySelectorAll("#coupons .card-columns")[0];
@@ -253,6 +260,7 @@ function print_coupons() {
 
 
 }
+
 
 
 //USUARIO
@@ -421,8 +429,14 @@ $(document).ready (function () {
 
   /* Sólamente coupons.html */
   if (document.getElementById("coupons") !== null) {
-    load_coupons();
+    function load_coupons() {
+        $.ajax({
+          url: "coupons.json"
+        }).done(function (response) {
+      print_coupons();
+    });
   }
+}
 
   /* Sólamente profile.html */
   if (document.getElementById("user-profile") !== null) {
@@ -436,7 +450,6 @@ $(document).ready (function () {
 
   if (document.getElementById("map") !== null) {
     cargar_mapa();
-  }
-
+  };
 
 });
