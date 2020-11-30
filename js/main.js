@@ -114,6 +114,8 @@ var map;
 var position;
 var base_price = 75;
 var coupons = [];
+var marker;
+var markers;
 var user = {
     username: "esunol01@gmail.com",
     name: "Elisa",
@@ -123,55 +125,6 @@ var user = {
     car_plate: "0123-ABC",
     env_class: "ECO"
 };
-//CHANGE SIGNUP
-function change_dni() {
-    var dni = $("#dni").val();
-    if (dni.length == 8) {
-        var dni_num = parseInt(dni);
-        document.getElementById("dnil").innerHTML = dni_letter(dni_num);
-    }
-    else {
-        document.getElementById("dnil").innerHTML = "";
-    }
-}
-function change_birth_date() {
-    var birth_date = $("#birth_date").val();
-    if (birth_date != "") {
-        var age = calc_age(birth_date);
-        if (age < 100 && age > 0) {
-            document.getElementById("age").innerHTML = age + " years old";
-        }
-        else {
-            document.getElementById("age").innerHTML = "";
-        }
-    }
-    else {
-        document.getElementById("age").innerHTML = "";
-    }
-}
-function change_env_class() {
-    var env_class = $("#env_class").val();
-    if (env_class != "") {
-        var discount = get_discount(env_class);
-        if (discount > 0) {
-            document.getElementById("eco_discount").innerHTML = discount + "% discount";
-        }
-        else {
-            document.getElementById("eco_discount").innerHTML = "no discount";
-        }
-    }
-    else {
-        document.getElementById("eco_discount").innerHTML = "";
-    }
-}
-function calc_prices() {
-    var text = "";
-    for (var i = 0; i <= 50; i += 5) {
-        var price = base_price - (base_price * i / 100);
-        text += "<tr><td>" + i + "%</td><td>" + price + "€</td></tr>";
-    }
-    document.getElementById("prices_body").innerHTML = text;
-}
 //CUPONES
 function print_coupons() {
     var articles_list = document.querySelectorAll("#coupons .card-columns")[0];
@@ -300,11 +253,12 @@ $("#boton").on("click", function () {
                 var longitude = item.location.longitude;
                 var title = item.title;
                 var popup = new mapboxgl.Popup({ offset: 25 }).setText(title);
-                var marker = new mapboxgl.Marker()
+                marker = new mapboxgl.Marker()
                     //usar el marker como variable global y traerte el listado de markers y guardarlo en una array y poder ir borrandolos al volver a buscar
                     .setLngLat([longitude, latitude])
                     .setPopup(popup)
                     .addTo(map);
+                markers.push(marker);
                 console.log("hemos encontrado ", item.title);
             }
             else {
