@@ -15,13 +15,13 @@ type ubicacion = [
 //Validar que la letra del DNI coincide
 
 $.validator.addMethod("nif", function(value, element, param) {
-  var resultado = value.match(/\d{8}[A-Z]$/g)
+  let resultado = value.match(/\d{8}[A-Z]$/g)
   console.log(resultado);
-  var dni1 = <string>$("dni").val();
-  var dni = parseInt(dni1.substring(0,8));
-  var letters = "TRWAGMYFPDXBNJZSQVHLCKE";
-  var resto = dni % 23;
-  var letter = letters.substr(resto, 1);
+  let dni1 = <string>$("dni").val();
+  let dni = parseInt(dni1.substring(0,8));
+  let letters = "TRWAGMYFPDXBNJZSQVHLCKE";
+  let resto = dni % 23;
+  let letter = letters.substr(resto, 1);
   console.log(letter);
   if (resultado !== null && dni1.substring(8,9) === letter ){
       return true;
@@ -35,12 +35,12 @@ $.validator.addMethod("nif", function(value, element, param) {
 //Validar que la edad esta entre 1 y 99
 
 $.validator.addMethod("edad", function(v, element, param){
-    var birth_date = <string>$("#birth_date").val();
-    var b_date = new Date(birth_date);
-    var n_date = new Date();
-    var dif = n_date.getTime() - b_date.getTime();
-    var dif_days = dif / (1000 * 3600 * 24 * 365);
-    var dias = Math.round(dif_days);
+    let birth_date = <string>$("#birth_date").val();
+    let b_date = new Date(birth_date);
+    let n_date = new Date();
+    let dif = n_date.getTime() - b_date.getTime();
+    let dif_days = dif / (1000 * 3600 * 24 * 365);
+    let dias = Math.round(dif_days);
     console.log (dias);
     if( dias !== null && dias <= 99 && dias >= 18 ){
       return true;
@@ -55,7 +55,7 @@ $.validator.addMethod("edad", function(v, element, param){
   //Validar que el formato de la matricula sea correcto
 
   $.validator.addMethod("matriculacheck", function(value, element, param) {
-    var resultado = value.match(/^[0-9]{1,4}(?!.*(LL|CH))[BCDFGHJKLMNPRSTVWXYZ]{3}$|^[A-Z]{2}-[0-9]{4}(?!.*(LL|CH))-[A-Z]{2}$/)
+    let resultado = value.match(/^[0-9]{1,4}(?!.*(LL|CH))[BCDFGHJKLMNPRSTVWXYZ]{3}$|^[A-Z]{2}-[0-9]{4}(?!.*(LL|CH))-[A-Z]{2}$/)
     if (resultado === null) {
       return false;
     }
@@ -150,15 +150,15 @@ $("form").validate({
 
 
 
-//VARIABLES GLOBALES
-var map: any;
-var position: ubicacion;
-var base_price: number = 75;
-var coupons = [];
+//letIABLES GLOBALES
+let map: any;
+let position: ubicacion;
+let base_price: number = 75;
+let coupons = [];
 let marker: any;
 let markers: any[];
 
-var user = {
+let user = {
   username: "esunol01@gmail.com",
   name: "Elisa",
   surnames: "Suñol Winkler",
@@ -176,43 +176,40 @@ var user = {
 
 
 function print_coupons() {
-  var articles_list = document.querySelectorAll("#coupons .card-columns")[0];
+  let articles_list = document.querySelectorAll("#coupons .card-columns")[0];
   articles_list.innerHTML = "";
   // articles_list.childNodes.forEach(function(item) {
   //   articles_list.removeChild(item);
   // });
 
   coupons.forEach(function(item) {
-    var article = document.createElement("article");
+    let article = document.createElement("article");
     article.classList.add("card");
     articles_list.appendChild(article);
 
-    var img = document.createElement("img");
+    let img = document.createElement("img");
     img.src = "img/coupons/" + item.image;
     img.alt = item.name;
     img.classList.add("card-img-top", "p-2");
     article.appendChild(img);
 
-    var article_body = document.createElement("div");
+    let article_body = document.createElement("div");
     article_body.classList.add("card-body", "text-center");
     article.appendChild(article_body);
 
-    var p = document.createElement("p");
+    let p = document.createElement("p");
     p.classList.add("card-text", "lead");
     p.innerHTML = item.name;
     article_body.appendChild(p);
 
-    var link = document.createElement("a");
+    let link = document.createElement("a");
     link.href = "#";
     link.classList.add("btn", "btn-primary", "stretched-link");
     link.innerHTML = "See Coupon";
     link.setAttribute("data-toggle", "modal");
     link.setAttribute("data-target", "#coupon");
     article_body.appendChild(link);
-
   });
-
-
 }
 
 
@@ -221,16 +218,16 @@ function print_coupons() {
 
 function start_user() {
   document.querySelectorAll("#username")[0].innerHTML = user.name + " " + user.surnames;
-  var elements = document.getElementsByClassName("logged-in");
-  for (var i = 0; i < elements.length; i++) {
+  let elements = document.getElementsByClassName("logged-in");
+  for (let i = 0; i < elements.length; i++) {
     if (localStorage["is_logged_in"] === "true") {
       elements[i].classList.remove("d-none");
     } else {
       elements[i].classList.add("d-none");
     }
   }
-  var elements = document.getElementsByClassName("logged-out");
-  for (var i = 0; i < elements.length; i++) {
+  elements = document.getElementsByClassName("logged-out");
+  for (let i = 0; i < elements.length; i++) {
     if (localStorage["is_logged_in"] === "true") {
       elements[i].classList.add("d-none");
     } else {
@@ -240,14 +237,14 @@ function start_user() {
 }
 
 function fill_user_profile() {
-  var table = document.querySelectorAll("#user-profile tbody")[0];
+  let table = document.querySelectorAll("#user-profile tbody")[0];
   table.innerHTML = "";
-  for (var i in user) {
-    var tr = document.createElement("tr");
-    var td1 = document.createElement("td");
+  for (let i in user) {
+    let tr = document.createElement("tr");
+    let td1 = document.createElement("td");
     td1.innerHTML = i;
     tr.appendChild(td1);
-    var td2 = document.createElement("td");
+    let td2 = document.createElement("td");
     td2.innerHTML = user[i];
     tr.appendChild(td2);
 
@@ -259,22 +256,22 @@ function fill_user_profile() {
 //FORMULARIO SIGN UP
 
 function dni_letter(dni: number) {
-  var letters = "TRWAGMYFPDXBNJZSQVHLCKE";
-  var resto = dni % 23;
-  var letter = letters.substr(resto, 1);
+  let letters = "TRWAGMYFPDXBNJZSQVHLCKE";
+  let resto = dni % 23;
+  let letter = letters.substr(resto, 1);
   return letter;
 }
 
 function calc_age(birth_date: string) {
-  var b_date = new Date(birth_date);
-  var n_date = new Date();
-  var dif = n_date.getTime() - b_date.getTime();
-  var dif_days = dif / (1000 * 3600 * 24 * 365);
+  let b_date = new Date(birth_date);
+  let n_date = new Date();
+  let dif = n_date.getTime() - b_date.getTime();
+  let dif_days = dif / (1000 * 3600 * 24 * 365);
   return Math.round(dif_days);
 }
 
 function get_discount(env_class:string) {
-  var discount:number = 0;
+  let discount:number = 0;
   switch (env_class) {
     case "ECO":
       discount= 5;
@@ -317,46 +314,94 @@ function initIsLoggedIn() {
 
 //Mapa
 
-$("#boton").on("click", function() {
-  $.ajax({
-    url: "https://cors-anywhere.herokuapp.com/https://datos.madrid.es/egob/catalogo/202625-0-aparcamientos-publicos.json",
-    method: "GET",
-  }).done(function (response) {
-    var parking = response["@graph"];
-    console.log(parking);
 
-    parking.forEach(function(item) {
-      console.log(item.title);
-      var finder = <string>$("#finder").val();
 
-    var str = item.title.toUpperCase().includes(finder.toUpperCase());
-
-    if (str) {
-    var latitude = item.location.latitude;
-    var longitude = item.location.longitude;
-    var title = item.title;
-    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
-      title
-    );
-    marker = new mapboxgl.Marker()
-    //usar el marker como variable global y traerte el listado de markers y guardarlo en una array y poder ir borrandolos al volver a buscar
-    .setLngLat([longitude, latitude])
-    .setPopup(popup)
-    .addTo(map);
-     markers.push(marker);
-
-        console.log("hemos encontrado ", item.title);
+function cargar_api(resolve: any, reject: any) {
+      $.ajax({
+      url: "https://cors-anywhere.herokuapp.com/https://datos.madrid.es/egob/catalogo/202625-0-aparcamientos-publicos.json",
+      method: "GET",
+    }).done(function (response) {
+      if(response !== undefined){
+        resolve(response)
       } else {
-        console.log("No hemos encontrado el parking");
-      };
+        reject ("La llamada a la API ha fallado")
+      }
+    /*  let parking = response["@graph"];
+      console.log(parking);
+
+      parking.forEach(function(item) {
+        console.log(item.title);
+        let finder = <string>$("#finder").val();
+
+      let str = item.title.toUpperCase().includes(finder.toUpperCase());
+
+      if (str) {
+      let latitude = item.location.latitude;
+      let longitude = item.location.longitude;
+      let title = item.title;
+      let popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        title
+      );
+      marker = new mapboxgl.Marker()
+      //usar el marker como letiable global y traerte el listado de markers y guardarlo en una array y poder ir borrandolos al volver a buscar
+      .setLngLat([longitude, latitude])
+      .setPopup(popup)
+      .addTo(map);
+       markers.push(marker);
+
+          console.log("hemos encontrado ", item.title);
+        } else {
+          console.log("No hemos encontrado el parking");
+        };
+      });
+*/
+
+    }).fail(function() {
+      console.log("Ha habido un error");
     });
+}
 
 
-  }).fail(function(response) {
-    console.log("Ha habido un error");
-  });
+async function get_parkings() {
+  return new Promise(cargar_api)}
 
-})
+  async function load_parkings() {
+    try{
+      const response = await get_parkings();
+      let parking = response["@graph"];
+      console.log(parking);
+
+      parking.forEach(function(item) {
+        console.log(item.title);
+        let finder = <string>$("#finder").val();
+
+      let str = item.title.toUpperCase().includes(finder.toUpperCase());
+
+      if (str) {
+      let latitude = item.location.latitude;
+      let longitude = item.location.longitude;
+      let title = item.title;
+      let popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        title
+      );
+      marker = new mapboxgl.Marker()
+      //usar el marker como letiable global y traerte el listado de markers y guardarlo en una array y poder ir borrandolos al volver a buscar
+      .setLngLat([longitude, latitude])
+      .setPopup(popup)
+      .addTo(map);
+       markers.push(marker);
+
+          console.log("hemos encontrado ", item.title);
+        } else {
+          console.log("No hemos encontrado el parking");
+        };
+      });
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+  $("#boton").on("click", load_parkings);
 
 
 
